@@ -1,49 +1,61 @@
-import 'Package:flutter/Material.dart';
+import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'login.dart';
 
-void main(){
-   runApp(
-     const MaterialApp(
-     debugShowCheckedModeBanner: false,
-     home:splashscreen(),
-    ),
-  );
+void main() {
+  runApp(const MyApp());
 }
 
-class splashscreen extends StatelessWidget{
-  const splashscreen({super.key});
-      @override
-        Widget build(BuildContext context) {
-         return MaterialApp(
-           debugShowCheckedModeBanner: false,
-              home: Scaffold(
-                body: Center(
-                 child: Column(
-                 mainAxisAlignment:MainAxisAlignment.center,
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                       DefaultTextStyle(
-                         style: const TextStyle(
-                         color: Colors.black,
-                         fontSize: 30,
-                         fontWeight: FontWeight.bold,
-                     ),
-
-                      child: AnimatedTextKit(
-                         animatedTexts: [
-                         TypewriterAnimatedText(
-                           'TaskFlow',
-                            speed: const Duration(milliseconds: 300),
-                        ),
-                      ],
-                           totalRepeatCount: 1,
-                    ),
-                  ),
-                ]
-             ),
-           ),
-         ),
-       );
-    }
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+    );
   }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            DefaultTextStyle(
+              style: const TextStyle(
+                color: Color(0xFFB8860B),
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+              child: AnimatedTextKit(
+                animatedTexts: [
+                  TypewriterAnimatedText(
+                    'TaskFlow',
+                    speed: const Duration(milliseconds: 100),
+                  ),
+                ],
+                totalRepeatCount: 1,
+                onFinished: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Login(),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

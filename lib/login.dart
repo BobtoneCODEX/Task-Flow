@@ -1,0 +1,162 @@
+import 'package:flutter/material.dart';
+
+class Login extends StatefulWidget {
+  const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  bool isObscure = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                
+               
+
+                
+Align(
+  alignment: Alignment.centerLeft,
+  child: RichText(
+    text: const TextSpan(
+      children: [
+        TextSpan(
+          text: "Welcome ",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 37,
+            fontWeight:  FontWeight.bold,
+          ),
+        ),
+        TextSpan(
+          text: "Back",
+          style: TextStyle(
+            color: Color(0xFFB8860B), // Gold
+            fontSize: 37,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
+    ),
+  ),
+),
+
+
+
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Let's Continue Your Journey",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                     ),
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+
+                // EMAIL
+                TextField(
+                  controller: emailController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: "Email",
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    filled: true,
+                    fillColor: Colors.grey[900],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+
+
+
+                const SizedBox(height: 10),
+
+                // PASSWORD
+                TextField(
+                  controller: passwordController,
+                  obscureText: isObscure,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: "Password",
+                    hintStyle: const TextStyle(color: Colors.grey),
+                    filled: true,
+                    fillColor: Colors.grey[900],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        isObscure ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.grey,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 25),
+
+                // LOGIN BUTTON
+                SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFB8860B),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    onPressed: () {
+                      // handle login logic here
+                      print(emailController.text);
+                      print(passwordController.text);
+                    },
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 15),
+
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
