@@ -24,7 +24,7 @@ import 'package:task_flow/login.dart';
               child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
+                  //TEXT1
                 Align(
                  alignment: Alignment.centerLeft,
                  child: RichText(
@@ -56,6 +56,7 @@ import 'package:task_flow/login.dart';
                ),
              ),
 
+                   //TEXT 2
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -68,7 +69,8 @@ import 'package:task_flow/login.dart';
             ),
 
                 const SizedBox(height: 20),
-                  
+
+            //FULL NAME 
              TextField(
                 style:const TextStyle(color: Colors.white),
                   decoration: InputDecoration(
@@ -107,9 +109,10 @@ import 'package:task_flow/login.dart';
              ),
            ),
 
+
                 const SizedBox(height: 10),
 
-                // PASSWORD
+                  // PASSWORD
                 TextField(
                   controller: passwordController,
                   obscureText: isObscure,
@@ -142,15 +145,15 @@ import 'package:task_flow/login.dart';
                         isObscure = !isObscure;
                     }
                   );
-
                 },
                ),
               ),
             ),
 
+
              const SizedBox(height: 37),
 
-                // LOGIN BUTTON
+                // SIGNUP BUTTON
                SizedBox(
                     width: double.infinity,
                     height: 50,
@@ -177,27 +180,89 @@ import 'package:task_flow/login.dart';
              ),
            ),
 
-               const SizedBox(height: 15),
 
-                    Align(
-                       alignment: Alignment.center,
-                       child: TextButton(
-                       onPressed: () {
-                       Navigator.push( context,
-                       MaterialPageRoute(
-                       builder: (context) => const Login(),
-                   ),
-                 );
-               },
-                        child: const Text(
-                        "Already have an account? Login",
+
+
+              SizedBox(height: 16),
+
+                // DIVIDER WITH TEXT
+                Row(
+                  children: [
+                    Expanded(child: Divider(color: Colors.grey.shade400)),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        "Or sign up with",
                         style: TextStyle(
-                        color: Colors.grey,
-                 ),
-              ),
-            ),
-         ),
+                          color: Colors.grey,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Divider(color: Colors.grey.shade400))
+                  ],
+                ),
 
+
+
+
+                 
+                 SizedBox(height: 20),
+                      //ICONS
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+
+                        Icon(
+                          Icons.facebook,
+                          color: Colors.grey,
+                          size: 35,
+                      ),
+
+                             SizedBox(width: 20),
+
+                        Icon(
+                          Icons.g_mobiledata,
+                          color: Colors.grey,
+                          size: 49,
+                      ),
+
+                             SizedBox(width: 20),
+
+                        Icon(
+                          Icons.apple,
+                          color: Colors.grey,
+                          size: 43,
+                      ),
+                    ],
+                   ),
+                      SizedBox(height: 30),
+
+
+                  //ALREADY HAVE AN ACCOUNT
+                  TextButton(
+                     onPressed: () {
+                     Navigator.push(context,MaterialPageRoute( builder: (context) => const Login(), ),); },
+                     child: Text.rich(
+                  TextSpan(
+                     text: "Already have an account? ",
+                     style: const TextStyle(color: Colors.white,              fontSize:15,
+               ),
+                  children: const [
+                     TextSpan(
+                     text: "Login",
+                     style: TextStyle(color: Color.fromARGB(255, 73, 179, 250),
+                     fontSize:15,
+               ),
+            ),
+          ],
+        ),
+      ),
+    ),
+
+
+
+                  
 
               ],
             ),

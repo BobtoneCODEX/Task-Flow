@@ -6,26 +6,27 @@ import 'package:task_flow/signup.dart';
 
     @override
     State<Login> createState() => _LoginState();
-}
+ }
 
   class _LoginState extends State<Login> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isObscure = true;
 
-   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-    backgroundColor: Colors.black,
-      body: Padding(
-        padding: const EdgeInsets.all(20),
+          @override
+          Widget build(BuildContext context) {
+          return Scaffold(
+          backgroundColor: Colors.black,
+          body: Padding(
+          padding: const EdgeInsets.all(20),
+
 
          child: Center(
           child: SingleChildScrollView(
-           child: Column(
-             mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+                //TEXT1
                 Align(
                  alignment: Alignment.centerLeft,
                  child: RichText(
@@ -56,6 +57,8 @@ import 'package:task_flow/signup.dart';
                ),
              ),
 
+
+                 //TEXT 1
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -68,6 +71,7 @@ import 'package:task_flow/signup.dart';
             ),
 
                 const SizedBox(height: 20),
+
 
                 // EMAIL
               TextField(
@@ -86,6 +90,7 @@ import 'package:task_flow/signup.dart';
                ),
              ),
            ),
+
 
                 const SizedBox(height: 10),
 
@@ -116,6 +121,7 @@ import 'package:task_flow/signup.dart';
                        color: const Color.fromARGB(255, 255, 232, 232),
                      ),
 
+
                       onPressed: () {
                        setState(() {
                         isObscure = !isObscure;
@@ -123,12 +129,11 @@ import 'package:task_flow/signup.dart';
                   );
                 },
                ),
-
               ),
             ),
 
-                const SizedBox(height: 8),
 
+                const SizedBox(height: 8),
                   Align(
                    alignment: Alignment.centerRight,
                    child: TextButton(
@@ -142,6 +147,7 @@ import 'package:task_flow/signup.dart';
           ),
        ),
 
+
                 // LOGIN BUTTON
                SizedBox(
                     width: double.infinity,
@@ -154,10 +160,12 @@ import 'package:task_flow/signup.dart';
                  ),
                ),
 
+
             onPressed: () {
                print(emailController.text);
                print(passwordController.text);
           },
+
 
                 child: const Text(
                    "Login",
@@ -169,32 +177,99 @@ import 'package:task_flow/signup.dart';
         ),
       ),
 
-                const SizedBox(height: 15),
 
-             Align(
-              alignment: Alignment.center,
-              child: TextButton(
-              onPressed: () {
-                 Navigator.push( context,
-                    MaterialPageRoute(
-                    builder: (context) => const Signup(),
-                 ),
-               );
-              },
-              
-                  child: const Text(
-                     "New hear? CREAT AN ACCOUNT",
-                      style: TextStyle(
-                      color: Colors.grey,
+
+
+                      SizedBox(height: 35),
+
+                // DIVIDER WITH TEXT
+                        Row(
+                           children: [
+                          Expanded(child: Divider(color: Colors.grey.shade400)),
+                         Padding(
+                           padding: const EdgeInsets.symmetric(horizontal: 8),
+                           child: Text(
+                           "Or sign up with",
+                           style: TextStyle(
+                           color: Colors.grey,
+                           fontSize: 15,
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Divider(color: Colors.grey.shade400))
+                  ],
+                ),
+
+
+
+                         
+                      SizedBox(height: 20),
+                      //ICONS
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+
+                        Icon(
+                          Icons.facebook,
+                          color: Colors.grey,
+                          size: 35,
+                      ),
+
+                             SizedBox(width: 20),
+
+                        Icon(
+                          Icons.g_mobiledata,
+                          color: Colors.grey,
+                          size: 49,
+                      ),
+
+                             SizedBox(width: 20),
+
+                        Icon(
+                          Icons.apple,
+                          color: Colors.grey,
+                          size: 43,
+                      ),
+                    ],
                    ),
+                      SizedBox(height: 30),
+
+
+
+                      const SizedBox(height: 15),
+
+                           //ALREADY HAVE AN ACCOUNT
+                           TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                builder: (context) => const Signup(),
+                           ),
+                        );
+                     },
+                                 child: Text.rich(
+                              TextSpan(
+                              text: "New here? ",
+                              style: const TextStyle(color: Colors.grey),
+                              children: const [
+                                  TextSpan(
+                                     text: "CREATE AN ACCOUNT",
+                                     style: TextStyle(color: Colors.lightBlue),
+                           ),
+                       ],
+                     ),
+                   ),
+                ),
+
+  
+
+
+                    ],
+                  ),
                  ),
                ),
-             ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+              ),
+            );
+          }
+        }
