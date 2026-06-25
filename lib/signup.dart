@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_flow/login.dart';
+import 'otp.dart';
 
  class Signup extends StatefulWidget {
  const Signup({super.key});
@@ -24,6 +25,8 @@ import 'package:task_flow/login.dart';
               child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+
+
                   //TEXT1
                 Align(
                  alignment: Alignment.centerLeft,
@@ -56,6 +59,7 @@ import 'package:task_flow/login.dart';
                ),
              ),
 
+
                    //TEXT 2
                 Align(
                   alignment: Alignment.centerLeft,
@@ -68,7 +72,7 @@ import 'package:task_flow/login.dart';
               ),
             ),
 
-                const SizedBox(height: 20),
+        const SizedBox(height: 20),
 
             //FULL NAME 
              TextField(
@@ -88,7 +92,7 @@ import 'package:task_flow/login.dart';
              ),
            ),
 
-                 const SizedBox(height: 10),
+        const SizedBox(height: 10),
 
            
                 // EMAIL
@@ -110,7 +114,7 @@ import 'package:task_flow/login.dart';
            ),
 
 
-                const SizedBox(height: 10),
+       const SizedBox(height: 10),
 
                   // PASSWORD
                 TextField(
@@ -134,6 +138,7 @@ import 'package:task_flow/login.dart';
                      borderSide: BorderSide.none,
                   ),
 
+
                     suffixIcon: IconButton(
                      icon: Icon(
                        isObscure ? Icons.visibility : Icons.visibility_off,
@@ -151,7 +156,7 @@ import 'package:task_flow/login.dart';
             ),
 
 
-             const SizedBox(height: 37),
+      const SizedBox(height: 37),
 
                 // SIGNUP BUTTON
                SizedBox(
@@ -166,9 +171,14 @@ import 'package:task_flow/login.dart';
                ),
 
             onPressed: () {
-               print(emailController.text);
-               print(passwordController.text);
+             Navigator.pushReplacement(
+              context, 
+              MaterialPageRoute(
+                builder: (context) => const otp(),
+              ),
+            );
           },
+
 
                 child: const Text(
                    "Signup",
@@ -183,7 +193,7 @@ import 'package:task_flow/login.dart';
 
 
 
-              SizedBox(height: 16),
+       SizedBox(height: 16),
 
                 // DIVIDER WITH TEXT
                 Row(
@@ -207,7 +217,7 @@ import 'package:task_flow/login.dart';
 
 
                  
-                 SizedBox(height: 20),
+       SizedBox(height: 20),
                       //ICONS
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -219,7 +229,8 @@ import 'package:task_flow/login.dart';
                           size: 35,
                       ),
 
-                             SizedBox(width: 20),
+
+         SizedBox(width: 20),
 
                         Icon(
                           Icons.g_mobiledata,
@@ -227,7 +238,7 @@ import 'package:task_flow/login.dart';
                           size: 49,
                       ),
 
-                             SizedBox(width: 20),
+           SizedBox(width: 20),
 
                         Icon(
                           Icons.apple,
@@ -242,12 +253,14 @@ import 'package:task_flow/login.dart';
                   //ALREADY HAVE AN ACCOUNT
                   TextButton(
                      onPressed: () {
-                     Navigator.push(context,MaterialPageRoute( builder: (context) => const Login(), ),); },
+                     Navigator.push(context,MaterialPageRoute(builder: (context) => const Login(), ),); },
                      child: Text.rich(
                   TextSpan(
                      text: "Already have an account? ",
                      style: const TextStyle(color: Colors.white,              fontSize:15,
                ),
+
+
                   children: const [
                      TextSpan(
                      text: "Login",
@@ -256,13 +269,11 @@ import 'package:task_flow/login.dart';
                ),
             ),
           ],
+
+
         ),
       ),
-    ),
-
-
-
-                  
+    ),        
 
               ],
             ),
