@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_flow/dashboard.dart';
 import 'package:task_flow/otp.dart';
 import 'package:pinput/pinput.dart';
 import 'login.dart';
@@ -165,11 +166,18 @@ import 'login.dart';
             onPressed: () {
                print(emailController.text);
                print(passwordController.text);
+
+                  Navigator.pushReplacement (context, 
+                  MaterialPageRoute ( 
+                  builder: (context) => const DashboardScreen()
+                 ),
+               );
+                
           },
 
 
                 child: const Text(
-                   "Signup",
+                   "Verify",
                     style: TextStyle(
                     fontSize: 18,
                     color: Colors.white,
@@ -177,7 +185,8 @@ import 'login.dart';
                ),
              ),
            ),
-     const SizedBox(height: 100,)
+
+         const SizedBox(height: 100,)
              
               ],
             ),
