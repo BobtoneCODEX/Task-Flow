@@ -1,202 +1,661 @@
+
 import 'package:flutter/material.dart';
 
+class DashboardScreen extends StatefulWidget {
+  const DashboardScreen({super.key});
 
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
 
-class DashboardScreen extends StatelessWidget{
-  const DashboardScreen ({super.key});
+class _DashboardScreenState extends State<DashboardScreen> {
+  List<bool> isSelected = [true, false, false, false];
 
-  @override 
-  Widget build (BuildContext context){
-    var child;
+  int selectedNavIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
-         backgroundColor: Colors.black,
-         body: SafeArea(
-         child: Padding(
-         padding: const EdgeInsets.all(20),
-         child: Column(
-         crossAxisAlignment: CrossAxisAlignment.start, 
-         children: [
+      backgroundColor: Colors.black,
 
-          Row(
+      // ================= BODY =================
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Icon(
-                Icons.menu,
-                color: Color(0xFFB8860B),
-              ),
 
-              const Spacer(),
-
-              const Icon(
-                Icons.notifications,
-                size: 28,
-                color: Colors.white,
-              ),
-
-              const SizedBox(width: 12),
-
-              const CircleAvatar(
-                radius: 17,
-                child: Icon(
-                  Icons.person,
-                  size: 20,
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 30),
-
-          RichText(
-            text: const TextSpan(
-              children: [
-                TextSpan(
-                  text: "GoodMorning ",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                TextSpan(
-                  text: "Bob👋",
-                  style: TextStyle(
+              // ================= TOP ICONS =================
+              Row(
+                children: const [
+                  Icon(
+                    Icons.menu,
                     color: Color(0xFFB8860B),
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
                   ),
+
+                  Spacer(),
+
+                  Icon(
+                    Icons.notifications,
+                    size: 28,
+                    color: Colors.white,
+                  ),
+
+                  SizedBox(width: 12),
+
+                  CircleAvatar(
+                    radius: 17,
+                    child: Icon(
+                      Icons.person,
+                      size: 20,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 30),
+
+              // ================= WELCOME =================
+              RichText(
+                text: const TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Good Morning ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "Bob 👋",
+                      style: TextStyle(
+                        color: Color(0xFFB8860B),
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-                  SizedBox(height: 7,),
-                 Text(
-                  "Let's get your task done",
-                  style: TextStyle(
+              ),
+
+              const SizedBox(height: 7),
+
+              const Text(
+                "Let's get your task done",
+                style: TextStyle(
                   color: Colors.grey,
                   fontSize: 15,
                 ),
               ),
-                SizedBox(height: 20,),
-                   TextField(
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                      hintText: "Search",
-                      prefixIcon: Icon(Icons.search,
-                      color: const Color.fromARGB(255, 138, 130, 130),
-                      ),
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      filled: true,
-                      fillColor: Colors.grey[900],
-                      border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
-               ),
-             ),
-           ),
 
-            SizedBox(height: 20,),
-                Row(
-                 children: [
+              const SizedBox(height: 20),
 
-                      Card(
-                        color:  Colors.grey[900],
-                           shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(10),
-                      ),
-                          child: Container(
-                          width: 80,
-                          height: 130,
+              // ================= SEARCH BAR =================
+              TextField(
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: Colors.grey,
+                  ),
+                  hintStyle: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                  filled: true,
+                  fillColor: Colors.grey[900],
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // ================= STAT CARDS =================
+              SizedBox(
+                height: 130,
+                child: Row(
+                  children: [
+
+                    // TASKS
+                    Expanded(
+                      child: Card(
+                        color: Colors.grey[900],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.task_alt,
+                              color: Color(0xFFB8860B),
+                              size: 30,
+                            ),
+
+                            SizedBox(height: 10),
+
+                            Text(
+                              "20",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            SizedBox(height: 5),
+
+                            Text(
+                              "Tasks",
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
 
-                  Spacer(),
+                    // COMPLETED
+                    Expanded(
+                      child: Card(
+                        color: Colors.grey[900],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.check_circle,
+                              color: Colors.green,
+                              size: 30,
+                            ),
 
-                      Card(
-                        color:  Colors.grey[900],
-                           shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(10),
-                      ),
-                          child: Container(
-                          width: 80,
-                          height: 130,
+                            SizedBox(height: 10),
+
+                            Text(
+                              "15",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            SizedBox(height: 5),
+
+                            Text(
+                              "Completed",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+                    ),
 
-                    Spacer(),
+                    // IN PROGRESS
+                    Expanded(
+                      child: Card(
+                        color: Colors.grey[900],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.autorenew,
+                              color: Colors.orange,
+                              size: 30,
+                            ),
 
-                       Card(
-                        color:  Colors.grey[900],
-                           shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(10),
-                      ),
-                          child: Container(
-                          width: 80,
-                          height: 130,
+                            SizedBox(height: 10),
+
+                            Text(
+                              "5",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            SizedBox(height: 5),
+
+                            Text(
+                              "In Progress",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+                    ),
 
-                      Spacer(),
+                    // OVERDUE
+                    Expanded(
+                      child: Card(
+                        color: Colors.grey[900],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.warning_amber_rounded,
+                              color: Colors.red,
+                              size: 30,
+                            ),
 
-                          Card(
-                           color:  Colors.grey[900],
-                           shape: RoundedRectangleBorder(
-                           borderRadius: BorderRadius.circular(10),
+                            SizedBox(height: 10),
+
+                            Text(
+                              "2",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            SizedBox(height: 5),
+
+                            Text(
+                              "Overdue",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                              child: Container(
-                              width: 80,
-                              height: 130,
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 10),
+
+              // ================= MY TASK CARD =================
+              Expanded(
+                child: Card(
+                  color: Colors.grey[900],
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        // TOP ROW
+                        Row(
+                          mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
+                          children: const [
+                            Text(
+                              "My Task",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            Text(
+                              "View All",
+                              style: TextStyle(
+                                color: Color(0xFFB8860B),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        const SizedBox(height: 20),
+
+                        // ================= FILTER =================
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: List.generate(
+                              4,
+                              (index) {
+                                final labels = [
+                                  "All",
+                                  "Active",
+                                  "Completed",
+                                  "Pending",
+                                ];
+
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      for (
+                                        int i = 0;
+                                        i < isSelected.length;
+                                        i++
+                                      ) {
+                                        isSelected[i] = i == index;
+                                      }
+                                    });
+                                  },
+                                  child: Container(
+                                    padding:
+                                        const EdgeInsets.symmetric(
+                                      horizontal: 17,
+                                      vertical: 8,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: isSelected[index]
+                                          ? const Color(0xFFB8860B)
+                                          : Colors.transparent,
+                                      borderRadius:
+                                          BorderRadius.circular(6),
+                                    ),
+                                    child: Text(
+                                      labels[index],
+                                      style: TextStyle(
+                                        color: isSelected[index]
+                                            ? Colors.white
+                                            : Colors.white70,
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           ),
-                      ],
-                   ),
-                      
-                   SizedBox(height: 10,),
-
-                    Card(
-                      color:  Colors.grey[900],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: Container(
-                      width: 585,
-                      height: 270,
-                  ),
-                ),
-
-              SizedBox(height: 5,),
-                
-                    Card(
-                      color:  Colors.grey[900],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Container(
-                      width: 585,
-                      height: 100,
-                  ),
-                ),
-                  
-
-             SizedBox(height: 12,),
-
-                Row(
-                   children: [
-                      Card(
-                        color: Colors.red,
-                        child:Container (
-                          width: 363,
-                          height: 27,
                         ),
-                      ),
-                   ],
-                ),
 
-              ], 
+                        const SizedBox(height: 20),
+
+                        // ================= TASK 1 =================
+                        Container(
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            children: [
+
+                              Container(
+                                width: 4,
+                                height: 45,
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color(0xFFB8860B),
+                                  borderRadius:
+                                      BorderRadius.circular(4),
+                                ),
+                              ),
+
+                              const SizedBox(width: 12),
+
+                              const Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Complete Flutter Dashboard",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 5),
+
+                                    Text(
+                                      "Today • 4:00 PM",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              const Icon(
+                                Icons.more_vert,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        const SizedBox(height: 12),
+
+                        // ================= TASK 2 =================
+                        Container(
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            children: [
+
+                              Container(
+                                width: 4,
+                                height: 45,
+                                decoration: BoxDecoration(
+                                  color: Colors.orange,
+                                  borderRadius:
+                                      BorderRadius.circular(4),
+                                ),
+                              ),
+
+                              const SizedBox(width: 12),
+
+                              const Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Build Authentication Screen",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 5),
+
+                                    Text(
+                                      "Tomorrow • 10:00 AM",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              const Icon(
+                                Icons.more_vert,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+
+
+
+
+
+                        
+
+
+                          const SizedBox(height: 12),
+
+                        // ================= TASK 2 =================
+                        Container(
+                          padding: const EdgeInsets.all(14),
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            children: [
+
+                              Container(
+                                width: 4,
+                                height: 45,
+                                decoration: BoxDecoration(
+                                  color: Colors.orange,
+                                  borderRadius:
+                                      BorderRadius.circular(4),
+                                ),
+                              ),
+
+                              const SizedBox(width: 12),
+
+                              const Expanded(
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Build Authentication Screen",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+
+                                    SizedBox(height: 5),
+
+                                    Text(
+                                      "Tomorrow • 10:00 AM",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+
+                              const Icon(
+                                Icons.more_vert,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                        ),
+
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+
+      // ================= BOTTOM NAVIGATION =================
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+
+          color: Colors.grey,
+          border: Border(
+            top: BorderSide(
+              color: Colors.transparent,
             ),
           ),
         ),
-      );
-    }
-  }
-  
+        child: BottomNavigationBar(
+          currentIndex: selectedNavIndex,
+          onTap: (index) {
+            setState(() {
+              selectedNavIndex = index;
+            });
+          },
 
+          backgroundColor: Colors.black,
+
+          type: BottomNavigationBarType.fixed,
+
+          selectedItemColor: const Color(0xFFB8860B),
+
+          unselectedItemColor: Colors.grey,
+
+          selectedFontSize: 12,
+
+          unselectedFontSize: 12,
+
+          elevation: 0,
+
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined),
+              activeIcon: Icon(Icons.home),
+              label: "Home",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.task_outlined),
+              activeIcon: Icon(Icons.task),
+              label: "Tasks",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month_outlined),
+              activeIcon: Icon(Icons.calendar_month),
+              label: "Calendar",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.bar_chart_outlined),
+              activeIcon: Icon(Icons.bar_chart),
+              label: "Stats",
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person_outline),
+              activeIcon: Icon(Icons.person),
+              label: "Profile",
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
