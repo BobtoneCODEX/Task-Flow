@@ -115,9 +115,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const  SizedBox(height: 20),
 
-              // ================= STAT CARDS =================
+              // ================= START CARDS =================
               SizedBox(
                 height: 130,
                 child: Row(
@@ -336,15 +336,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         const SizedBox(height: 20),
 
                         // ================= FILTER =================
+
                         Container(
                           padding: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(8),
                           ),
+                          
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: List.generate(
+
                               4,
                               (index) {
                                 final labels = [
@@ -366,12 +369,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       }
                                     });
                                   },
+
                                   child: Container(
                                     padding:
-                                        const EdgeInsets.symmetric(
-                                      horizontal: 17,
-                                      vertical: 8,
-                                    ),
+                                    const EdgeInsets.symmetric(
+                                    horizontal: 17,
+                                    vertical: 8,
+                                  )
+                                  ,
                                     decoration: BoxDecoration(
                                       color: isSelected[index]
                                           ? const Color(0xFFB8860B)
@@ -379,6 +384,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       borderRadius:
                                           BorderRadius.circular(6),
                                     ),
+
                                     child: Text(
                                       labels[index],
                                       style: TextStyle(
@@ -388,8 +394,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         fontSize: 14,
                                       ),
                                     ),
+
                                   ),
                                 );
+                                
                               },
                             ),
                           ),
@@ -398,23 +406,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         const SizedBox(height: 20),
 
                         // ================= TASK 1 =================
+                        
                         Container(
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(8),
                           ),
+
+
                           child: Row(
                             children: [
 
                               Container(
                                 width: 4,
-                                height: 45,
+                                height: 40,
                                 decoration: BoxDecoration(
-                                  color:
-                                      const Color(0xFFB8860B),
-                                  borderRadius:
-                                      BorderRadius.circular(4),
+                                color: const Color(0xFFB8860B),
+                                borderRadius: BorderRadius.circular(4),
                                 ),
                               ),
 
@@ -423,8 +432,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               const Expanded(
                                 child: Column(
                                   crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  CrossAxisAlignment.start,
                                   children: [
+
                                     Text(
                                       "Complete Flutter Dashboard",
                                       style: TextStyle(
@@ -514,41 +524,37 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                         ),
 
-
-
-
-
-                        
-
-
                           const SizedBox(height: 12),
 
-                        // ================= TASK 2 =================
+                        // ================= TASK 3 =================
                         Container(
                           padding: const EdgeInsets.all(14),
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(8),
                           ),
-                          child: Row(
-                            children: [
 
+                          child: Row(
+                           children: [
                               Container(
                                 width: 4,
                                 height: 45,
                                 decoration: BoxDecoration(
-                                  color: Colors.orange,
-                                  borderRadius:
-                                      BorderRadius.circular(4),
-                                ),
+                                color: Colors.orange,
+                                borderRadius:
+                                BorderRadius.circular(4),
                               ),
+                            ),
+
 
                               const SizedBox(width: 12),
 
+
                               const Expanded(
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                   crossAxisAlignment:
+                                   CrossAxisAlignment.start,
+
                                   children: [
                                     Text(
                                       "Build Authentication Screen",
@@ -558,6 +564,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
+
+
 
                                     SizedBox(height: 5),
 
@@ -572,6 +580,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 ),
                               ),
 
+
+
                               const Icon(
                                 Icons.more_vert,
                                 color: Colors.grey,
@@ -580,80 +590,184 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                         ),
 
+
+
                       ],
                     ),
                   ),
                 ),
               ),
+
+
             ],
           ),
         ),
-      ),
+      ),    
 
-      // ================= BOTTOM NAVIGATION =================
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
+      
 
-          color: Colors.grey,
-          border: Border(
-            top: BorderSide(
-              color: Colors.transparent,
+      // ---------------- FLOATING + BUTTON ----------------
+                    floatingActionButton: Transform.translate(
+                      offset: const Offset(0, 39),
+                      child: SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: FloatingActionButton(
+                          onPressed: () {},
+
+                          elevation: 0,
+                          focusElevation: 0,
+                          hoverElevation: 0,
+                          highlightElevation: 0,
+                          backgroundColor: const Color(0xFFB8860B),
+
+                          child: const Icon(
+                            Icons.add,
+                            color: Colors.white,
+                            size: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+
+
+        // Put the + button in the middle
+              floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+          
+  // ---------------- BOTTOM NAVIGATION ----------------
+
+                bottomNavigationBar: Container(
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    border: Border(
+                      top: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                    ),
+                  ),
+
+
+                    child: BottomAppBar(
+                    color: Colors.black,
+                    elevation: 0,
+                    shape: const CircularNotchedRectangle(),
+                    notchMargin: 4,
+
+                      child: SizedBox(
+                      height: 60,
+                      child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+                         
+              // ---------------- HOME ----------------
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              selectedNavIndex = 0;
+                            });
+                          },
+
+                          icon: Icon(
+                            selectedNavIndex == 0
+                                ? Icons.home
+                                : Icons.home_outlined,
+
+                            color: selectedNavIndex == 0
+                                ? const Color(0xFFB8860B)
+                                : Colors.grey,
+
+                            size: 26,
+                          ),
+                        ),
+
+
+
+
+            // ---------------- TASKS ----------------
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedNavIndex = 1;
+                          });
+                        },
+
+                        icon: Icon(
+                          selectedNavIndex == 1
+                              ? Icons.task
+                              : Icons.task_outlined,
+
+                          color: selectedNavIndex == 1
+                              ? const Color(0xFFB8860B)
+                              : Colors.grey,
+
+                          size: 26,
+                        ),
+                      ),
+
+
+
+
+
+            // ---------------- SPACE FOR + BUTTON ----------------
+                      const SizedBox(
+                        width: 55,
+                      ),
+
+
+
+
+            // ---------------- STATS ----------------
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              selectedNavIndex = 3;
+                            });
+                          },
+
+                          icon: Icon(
+                            selectedNavIndex == 3
+                                ? Icons.calendar_month
+                                : Icons.calendar_month,
+
+                            color: selectedNavIndex == 3
+                                ? const Color(0xFFB8860B)
+                                : Colors.grey,
+
+                            size: 26,
+                          ),
+                        ),
+
+
+
+            // ---------------- PROFILE ----------------
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            selectedNavIndex = 4;
+                          });
+                        },
+
+                        icon: Icon(
+                          selectedNavIndex == 4
+                              ? Icons.person
+                              : Icons.person_outline,
+
+                          color: selectedNavIndex == 4
+                              ? const Color(0xFFB8860B)
+                              : Colors.grey,
+
+                          size: 26,
+                        ),
+                      ),
+
+
+              ],
             ),
           ),
-        ),
-        child: BottomNavigationBar(
-          currentIndex: selectedNavIndex,
-          onTap: (index) {
-            setState(() {
-              selectedNavIndex = index;
-            });
-          },
-
-          backgroundColor: Colors.black,
-
-          type: BottomNavigationBarType.fixed,
-
-          selectedItemColor: const Color(0xFFB8860B),
-
-          unselectedItemColor: Colors.grey,
-
-          selectedFontSize: 12,
-
-          unselectedFontSize: 12,
-
-          elevation: 0,
-
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home),
-              label: "Home",
-            ),
-
-            BottomNavigationBarItem(
-              icon: Icon(Icons.task_outlined),
-              activeIcon: Icon(Icons.task),
-              label: "Tasks",
-            ),
-
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month_outlined),
-              activeIcon: Icon(Icons.calendar_month),
-              label: "Calendar",
-            ),
-
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart_outlined),
-              activeIcon: Icon(Icons.bar_chart),
-              label: "Stats",
-            ),
-
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              activeIcon: Icon(Icons.person),
-              label: "Profile",
-            ),
-          ],
         ),
       ),
     );
