@@ -11,13 +11,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<bool> isSelected = [true, false, false, false];
   int selectedNavIndex = 0;
 
-    @override
+      @override
       Widget build(BuildContext context) {
       return Scaffold(
           backgroundColor: Colors.black,
           resizeToAvoidBottomInset: false,
-
-
           drawer: Drawer(
           backgroundColor: Colors.black,
           child: SafeArea(
