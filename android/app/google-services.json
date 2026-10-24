@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "185866002236",
+    "project_id": "task-flow-e0b1d",
+    "storage_bucket": "task-flow-e0b1d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185866002236:android:2dae43df14e64fc774c839",
+        "android_client_info": {
+          "package_name": "com.bobtonecodex.task_flow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBU7SwCH9urwBAsVb4YaWlm_zejlFivN_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
